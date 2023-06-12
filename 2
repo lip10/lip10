@@ -1,0 +1,42 @@
+int pir = 10;
+int ledPin = 13;
+int ldr = 0;
+void setup() {
+ analogReference (DEFAULT); 
+ Serial.begin(9600);
+ pinMode (ledPin, OUTPUT); 
+ pinMode (pir, INPUT);
+ Serial.begin(9600);
+}
+void loop()
+{
+ int s =digitalRead (pir); 
+ Serial.println(s);
+ Serial.println(analogRead(ldr));
+ delay (500); 
+ int I=0;
+ if (analogRead (ldr) >300)
+ {
+ if (s = HIGH)
+ {
+ if (analogRead (ldr) >300 && analogRead (ldr) < 400)
+ {
+ I=I+50;
+ digitalWrite(ledPin, I);
+ }
+ if (analogRead (ldr )>400 && analogRead(ldr) <500)
+ {
+ I=I+100;
+ digitalWrite (ledPin, I);
+ }
+ if (analogRead(ldr) >500 && analogRead(ldr) <600)
+ {
+ I=I+150;
+ digitalWrite(ledPin,I);
+ }
+ }
+ else{
+ digitalWrite(ledPin, LOW);
+ }
+ }
+}
