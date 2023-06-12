@@ -1,0 +1,29 @@
+int pot=A0;
+int val=0;
+int led = 12;
+int buzzer=8;
+void setup ()
+{
+ Serial.begin(9600); 
+ pinMode(pot, INPUT);
+ pinMode (led, OUTPUT);
+ pinMode (buzzer, OUTPUT);
+}
+void loop()
+{
+ val=analogRead(pot);
+ Serial.println(val);
+ delay(1000);
+ if (val <300)
+ {
+ digitalWrite(led,HIGH);
+ delay(1000); 
+ digitalWrite(buzzer, HIGH);
+ }
+ else{
+ digitalWrite(led, LOW);
+ delay (1000);
+ digitalWrite(buzzer, LOW);
+ }
+ 
+}
